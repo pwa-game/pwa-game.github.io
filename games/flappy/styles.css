@@ -1,0 +1,28 @@
+#board {
+  width: min(92vw, 62dvh, 420px);
+  aspect-ratio: 2 / 3;
+  border-radius: 14px;
+  background: #0c2b39;
+}
+
+.game-flappy .game-stage {
+  align-content: center;
+}
+
+.start-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  min-width: 150px;
+  min-height: 48px;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background: linear-gradient(180deg, #ffcf45, #f07b17);
+  color: #ffffff;
+  font-weight: 1000;
+  box-shadow: 0 0 18px rgba(255, 154, 42, 0.46), 0 14px 34px rgba(0, 0, 0, 0.34);
+}
+
+.start-overlay.hidden {
+  display: none;
+}

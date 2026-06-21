@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#102719" />
+    <meta name="description" content="下坠100层 PWA，左右移动不断向下跳，支持离线游玩。" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="下坠100层" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="../shared/arcade.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>下坠100层</title>
+  </head>
+  <body>
+    <main class="game-shell game-depth-drop">
+      <header class="game-header">
+        <a class="back-link" href="../../" aria-label="返回游戏大厅">‹</a>
+        <div class="game-title">
+          <h1>下坠100层</h1>
+          <p>左右移动，持续落到下一层。</p>
+        </div>
+        <div class="header-actions">
+          <button class="tool-button" type="button" id="pause">暂停</button>
+          <button class="tool-button primary" type="button" id="new-game">新局</button>
+        </div>
+      </header>
+
+      <section class="stat-row" aria-label="分数">
+        <div class="stat"><span>层数</span><strong id="score">0</strong></div>
+        <div class="stat"><span>最高</span><strong id="best">0</strong></div>
+        <div class="stat"><span>进度</span><strong id="aux">0层</strong></div>
+        <div class="stat"><span>状态</span><strong id="state">准备</strong></div>
+      </section>
+
+      <section class="game-stage">
+        <canvas class="panel retro-board tall-board" id="board" width="360" height="560" aria-label="下坠100层游戏画面"></canvas>
+        <div class="overlay hidden" id="overlay">
+          <strong id="overlay-title">暂停</strong>
+          <span id="overlay-text">按继续回到游戏。</span>
+          <div class="overlay-actions">
+            <button class="tool-button primary" type="button" id="resume">继续</button>
+            <button class="tool-button" type="button" id="overlay-new">新局</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="game-footer">
+        <div class="wide-controls" aria-label="控制">
+          <button class="control-button" type="button" data-move="left">←</button>
+          <button class="control-button" type="button" data-move="right">→</button>
+        </div>
+        <div class="message" id="message">拖动画面或按左右键移动。</div>
+      </footer>
+    </main>
+    <script src="../shared/retro.js"></script>
+    <script src="game.js"></script>
+    <script src="../shared/fullscreen-shell.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+    </script>
+  </body>
+</html>

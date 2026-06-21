@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#08121c" />
+    <meta name="description" content="打砖块 PWA，拖动球拍反弹小球，支持离线游玩。" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="打砖块" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="../shared/arcade.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>打砖块</title>
+  </head>
+  <body>
+    <main class="game-shell game-brick-breaker">
+      <header class="game-header">
+        <a class="back-link" href="../../" aria-label="返回游戏大厅">‹</a>
+        <div class="game-title">
+          <h1>打砖块</h1>
+          <p>拖动球拍，清掉砖块。</p>
+        </div>
+        <div class="header-actions">
+          <button class="tool-button" type="button" id="pause">暂停</button>
+          <button class="tool-button primary" type="button" id="new-game">新局</button>
+        </div>
+      </header>
+
+      <section class="stat-row" aria-label="分数">
+        <div class="stat"><span>分数</span><strong id="score">0</strong></div>
+        <div class="stat"><span>最高</span><strong id="best">0</strong></div>
+        <div class="stat"><span>关卡</span><strong id="aux">L1</strong></div>
+        <div class="stat"><span>状态</span><strong id="state">准备</strong></div>
+      </section>
+
+      <section class="game-stage">
+        <canvas class="panel retro-board tall-board" id="board" width="360" height="560" aria-label="打砖块游戏画面"></canvas>
+        <div class="overlay hidden" id="overlay">
+          <strong id="overlay-title">暂停</strong>
+          <span id="overlay-text">按继续回到游戏。</span>
+          <div class="overlay-actions">
+            <button class="tool-button primary" type="button" id="resume">继续</button>
+            <button class="tool-button" type="button" id="overlay-new">新局</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="game-footer">
+        <div class="message" id="message">拖动画面移动球拍。</div>
+      </footer>
+    </main>
+    <script src="../shared/retro.js"></script>
+    <script src="game.js"></script>
+    <script src="../shared/fullscreen-shell.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+#board {
+  width: min(88vw, 62dvh, 460px);
+  aspect-ratio: 1;
+  border-radius: 14px;
+  background: rgba(5, 17, 14, 0.84);
+}
+
+.game-snake .control-pad {
+  grid-template-columns: repeat(3, 64px);
+}

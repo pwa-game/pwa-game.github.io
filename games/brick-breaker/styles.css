@@ -1,0 +1,4 @@
+.game-brick-breaker .retro-board {
+  width: min(100%, 390px);
+  height: min(58vh, 560px);
+}

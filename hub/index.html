@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#10231f" />
+    <meta name="description" content="PWA Games 游戏大厅，安装后可进入独立离线游戏。" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="PWA Games" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>PWA Games</title>
+  </head>
+  <body>
+    <main class="hub-shell">
+      <header class="hub-header">
+        <div>
+          <p class="eyebrow">pwa-game.github.io</p>
+          <h1>游戏列表</h1>
+        </div>
+        <div class="hub-actions">
+          <button class="install-hint" type="button" id="install-hint" hidden>
+            iPhone 安装
+          </button>
+          <button class="update-app" type="button" id="update-app">
+            检查更新
+          </button>
+        </div>
+      </header>
+
+      <section class="game-list" aria-label="游戏列表">
+        <a class="game-row" href="games/cards/">
+          <span class="game-number">01</span>
+          <span class="game-main">
+            <strong>扑克合集</strong>
+            <span>414、斗地主、跑得快、掼蛋</span>
+          </span>
+          <span class="game-badge">独立 PWA</span>
+        </a>
+        <a class="game-row" href="games/2048/">
+          <span class="game-number">02</span>
+          <span class="game-main">
+            <strong>2048</strong>
+            <span>触摸滑动、撤销一步、本地最高分</span>
+          </span>
+          <span class="game-badge">独立 PWA</span>
+        </a>
+        <a class="game-row" href="games/tetris/">
+          <span class="game-number">03</span>
+          <span class="game-main">
+            <strong>俄罗斯方块</strong>
+            <span>键盘和触控按钮、下一个方块、等级加速</span>
+          </span>
+          <span class="game-badge">独立 PWA</span>
+        </a>
+        <a class="game-row" href="games/flappy/">
+          <span class="game-number">04</span>
+          <span class="game-main">
+            <strong>Flappy Bird</strong>
+            <span>点击起飞、管道碰撞、本地最高分</span>
+          </span>
+          <span class="game-badge">独立 PWA</span>
+        </a>
+        <a class="game-row" href="games/snake/">
+          <span class="game-number">05</span>
+          <span class="game-main">
+            <strong>贪吃蛇</strong>
+            <span>滑动、方向键、暂停和速度提升</span>
+          </span>
+          <span class="game-badge">独立 PWA</span>
+        </a>
+        <a class="game-row" href="games/minesweeper/">
+          <span class="game-number">06</span>
+          <span class="game-main">
+            <strong>扫雷</strong>
+            <span>首点安全、插旗模式、长按插旗、三档难度</span>
+          </span>
+          <span class="game-badge">独立 PWA</span>
+        </a>
+        <a class="game-row" href="games/depth-drop/">
+          <span class="game-number">07</span>
+          <span class="game-main">
+            <strong>下坠100层</strong>
+            <span>左右移动、连续下坠、弹簧和碎裂平台</span>
+          </span>
+          <span class="game-badge">独立 PWA</span>
+        </a>
+        <a class="game-row" href="games/helicopter/">
+          <span class="game-number">08</span>
+          <span class="game-main">
+            <strong>直升机穿洞</strong>
+            <span>按住上升、松开下降、洞穴距离挑战</span>
+          </span>
+          <span class="game-badge">独立 PWA</span>
+        </a>
+        <a class="game-row" href="games/brick-breaker/">
+          <span class="game-number">09</span>
+          <span class="game-main">
+            <strong>打砖块</strong>
+            <span>拖动球拍、反弹小球、连续关卡</span>
+          </span>
+          <span class="game-badge">独立 PWA</span>
+        </a>
+        <a class="game-row" href="games/sokoban/">
+          <span class="game-number">10</span>
+          <span class="game-main">
+            <strong>推箱子</strong>
+            <span>滑动推箱、五个内置关卡、本地进度</span>
+          </span>
+          <span class="game-badge">独立 PWA</span>
+        </a>
+        <a class="game-row" href="games/space-shooter/">
+          <span class="game-number">11</span>
+          <span class="game-main">
+            <strong>太空射击</strong>
+            <span>拖动飞船、自动射击、波次加速</span>
+          </span>
+          <span class="game-badge">独立 PWA</span>
+        </a>
+      </section>
+
+      <div class="toast-stack" aria-live="polite">
+        <p class="toast" id="ios-toast" hidden>Safari 分享按钮 → 添加到主屏幕。每个游戏也可以单独安装。</p>
+        <p class="toast" id="offline-toast" hidden>游戏大厅已可离线打开。</p>
+      </div>
+    </main>
+    <script src="sw-register.js"></script>
+  </body>
+</html>

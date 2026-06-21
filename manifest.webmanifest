@@ -1,0 +1,25 @@
+{
+  "name": "PWA Games",
+  "short_name": "PWA Games",
+  "description": "PWA Games 游戏大厅",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#10231f",
+  "background_color": "#071411",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

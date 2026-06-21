@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#14251e" />
+    <meta name="description" content="2048 PWA，支持触摸滑动、键盘、本地最高分和离线游玩。" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="2048" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="../shared/arcade.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>2048</title>
+  </head>
+  <body>
+    <main class="game-shell game-2048">
+      <header class="game-header">
+        <a class="back-link" href="../../" aria-label="返回游戏大厅">‹</a>
+        <div class="game-title">
+          <h1>2048</h1>
+          <p>滑动合并数字，冲到 2048。</p>
+        </div>
+        <div class="header-actions">
+          <button class="tool-button" type="button" id="undo">撤销</button>
+          <button class="tool-button primary" type="button" id="new-game">新局</button>
+        </div>
+      </header>
+
+      <section class="stat-row" aria-label="分数">
+        <div class="stat"><span>分数</span><strong id="score">0</strong></div>
+        <div class="stat"><span>最高</span><strong id="best">0</strong></div>
+        <div class="stat"><span>步数</span><strong id="moves">0</strong></div>
+      </section>
+
+      <section class="game-stage">
+        <div class="board-2048 panel" id="board" aria-label="2048 棋盘"></div>
+        <div class="overlay hidden" id="overlay">
+          <strong id="overlay-title">游戏结束</strong>
+          <span id="overlay-text">再来一局。</span>
+          <div class="overlay-actions">
+            <button class="tool-button primary hidden" type="button" id="overlay-resume">继续</button>
+            <button class="tool-button" type="button" id="overlay-new">新局</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="game-footer">
+        <div class="message" id="message">触摸滑动或使用方向键。</div>
+      </footer>
+    </main>
+    <script src="game.js"></script>
+    <script src="../shared/fullscreen-shell.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+    </script>
+  </body>
+</html>

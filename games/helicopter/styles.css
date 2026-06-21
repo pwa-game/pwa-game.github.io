@@ -1,0 +1,4 @@
+.game-helicopter .retro-board {
+  width: min(100%, 430px);
+  height: min(58vh, 560px);
+}

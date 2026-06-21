@@ -1,0 +1,9 @@
+.game-sokoban .square-board {
+  width: min(100%, 430px);
+  height: min(48vh, 430px);
+}
+
+.game-sokoban .control-pad {
+  grid-template-columns: repeat(3, 54px);
+  grid-template-rows: repeat(3, 42px);
+}

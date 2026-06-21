@@ -1,0 +1,151 @@
+.game-2048 {
+  --tile-gap: clamp(7px, 2vw, 12px);
+}
+
+.board-2048 {
+  position: relative;
+  width: min(88vw, 78dvh, 440px);
+  aspect-ratio: 1;
+  padding: var(--tile-gap);
+  background: rgba(5, 15, 19, 0.72);
+  contain: layout paint style;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.board-2048.panel {
+  background: rgba(5, 15, 19, 0.72);
+}
+
+.cell-layer,
+.tile-layer {
+  position: absolute;
+}
+
+.cell-layer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: var(--tile-gap);
+}
+
+.tile-layer {
+  inset: 0;
+  contain: layout paint;
+  pointer-events: none;
+}
+
+.cell,
+.tile-inner {
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  font-weight: 1000;
+}
+
+.cell {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.tile {
+  position: absolute;
+  left: 0;
+  top: 0;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.tile.dragging {
+  transition: none;
+}
+
+.tile.settling {
+  transition: transform 100ms ease-in-out;
+}
+
+.tile-inner {
+  width: 100%;
+  height: 100%;
+  color: #15201c;
+  font-size: clamp(24px, 9vw, 54px);
+  line-height: 1;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.24);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.20);
+  transform-origin: center;
+}
+
+.tile-new {
+  animation: tile-pop-in 115ms ease-out both;
+}
+
+.tile-merged {
+  animation: tile-merge-pop 145ms ease-out both;
+}
+
+.tile[data-value="2"] .tile-inner { background: #f5ecd1; }
+.tile[data-value="4"] .tile-inner { background: #f2dca3; }
+.tile[data-value="8"] .tile-inner { background: #f4a04f; color: white; }
+.tile[data-value="16"] .tile-inner { background: #ef7c3a; color: white; }
+.tile[data-value="32"] .tile-inner { background: #e85a45; color: white; }
+.tile[data-value="64"] .tile-inner { background: #d93a34; color: white; }
+.tile[data-value="128"] .tile-inner { background: #e7c85a; color: white; font-size: clamp(22px, 7vw, 48px); }
+.tile[data-value="256"] .tile-inner { background: #dfb83b; color: white; font-size: clamp(22px, 7vw, 48px); }
+.tile[data-value="512"] .tile-inner { background: #d6a51f; color: white; font-size: clamp(22px, 7vw, 48px); }
+.tile[data-value="1024"] .tile-inner { background: #d89319; color: white; font-size: clamp(18px, 6vw, 40px); }
+.tile[data-value="2048"] .tile-inner { background: #ffcc24; color: white; font-size: clamp(18px, 6vw, 40px); }
+.tile-inner.super { background: #63c7a5; color: white; font-size: clamp(18px, 6vw, 40px); }
+
+@keyframes tile-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes tile-merge-pop {
+  0% {
+    transform: scale(0.92);
+    filter: brightness(1.08);
+  }
+
+  62% {
+    transform: scale(1.13);
+    filter: brightness(1.18);
+  }
+
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  min-width: min(280px, 78vw);
+  border-radius: 12px;
+  padding: 22px;
+  background: rgba(7, 18, 19, 0.88);
+  text-align: center;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.42);
+}
+
+.overlay strong {
+  color: #ffd95a;
+  font-size: 28px;
+}
+
+.overlay span {
+  color: rgba(255, 255, 255, 0.76);
+  font-weight: 850;
+}

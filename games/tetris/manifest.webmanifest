@@ -1,0 +1,26 @@
+{
+  "name": "俄罗斯方块 - PWA Games",
+  "short_name": "俄罗斯方块",
+  "description": "离线可玩的俄罗斯方块小游戏",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#101827",
+  "background_color": "#07101c",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "../../icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "../../icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

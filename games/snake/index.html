@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#10281b" />
+    <meta name="description" content="贪吃蛇 PWA，支持滑动、方向键、暂停和离线游玩。" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="贪吃蛇" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="../shared/arcade.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>贪吃蛇</title>
+  </head>
+  <body>
+    <main class="game-shell game-snake">
+      <header class="game-header">
+        <a class="back-link" href="../../" aria-label="返回游戏大厅">‹</a>
+        <div class="game-title">
+          <h1>贪吃蛇</h1>
+          <p>吃到果子变长，别撞墙也别撞自己。</p>
+        </div>
+        <div class="header-actions">
+          <button class="tool-button" type="button" id="pause">暂停</button>
+          <button class="tool-button primary" type="button" id="new-game">新局</button>
+        </div>
+      </header>
+
+      <section class="stat-row" aria-label="分数">
+        <div class="stat"><span>分数</span><strong id="score">0</strong></div>
+        <div class="stat"><span>最高</span><strong id="best">0</strong></div>
+        <div class="stat"><span>速度</span><strong id="speed">1</strong></div>
+      </section>
+
+      <section class="game-stage">
+        <canvas class="panel" id="board" width="400" height="400" aria-label="贪吃蛇棋盘"></canvas>
+        <div class="overlay hidden" id="overlay">
+          <strong id="overlay-title">暂停</strong>
+          <span id="overlay-text">按继续回到游戏。</span>
+          <div class="overlay-actions">
+            <button class="tool-button primary" type="button" id="resume">继续</button>
+            <button class="tool-button" type="button" id="overlay-new">新局</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="game-footer">
+        <div class="control-pad" aria-label="控制">
+          <span></span>
+          <button class="control-button" type="button" data-dir="up">↑</button>
+          <span></span>
+          <button class="control-button" type="button" data-dir="left">←</button>
+          <button class="control-button primary" type="button" data-dir="down">↓</button>
+          <button class="control-button" type="button" data-dir="right">→</button>
+        </div>
+        <div class="message" id="message">滑动棋盘或使用方向键控制。</div>
+      </footer>
+    </main>
+    <script src="game.js"></script>
+    <script src="../shared/fullscreen-shell.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+    </script>
+  </body>
+</html>

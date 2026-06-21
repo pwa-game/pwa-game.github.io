@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#10231f" />
+    <meta name="description" content="推箱子 PWA，滑动或方向键推箱子过关，支持离线游玩。" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="推箱子" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="../shared/arcade.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>推箱子</title>
+  </head>
+  <body>
+    <main class="game-shell game-sokoban">
+      <header class="game-header">
+        <a class="back-link" href="../../" aria-label="返回游戏大厅">‹</a>
+        <div class="game-title">
+          <h1>推箱子</h1>
+          <p>把箱子推到所有目标点。</p>
+        </div>
+        <div class="header-actions">
+          <button class="tool-button" type="button" id="pause">重置</button>
+          <button class="tool-button primary" type="button" id="new-game">本关重来</button>
+        </div>
+      </header>
+
+      <section class="stat-row" aria-label="分数">
+        <div class="stat"><span>步数</span><strong id="score">0</strong></div>
+        <div class="stat"><span>最高关</span><strong id="best">0</strong></div>
+        <div class="stat"><span>关卡</span><strong id="aux">1/5</strong></div>
+        <div class="stat"><span>目标</span><strong id="state">0/0</strong></div>
+      </section>
+
+      <section class="game-stage">
+        <canvas class="panel retro-board square-board" id="board" width="420" height="420" aria-label="推箱子棋盘"></canvas>
+        <div class="overlay hidden" id="overlay">
+          <strong id="overlay-title">过关</strong>
+          <span id="overlay-text">进入下一关。</span>
+          <div class="overlay-actions">
+            <button class="tool-button primary" type="button" id="resume">继续</button>
+            <button class="tool-button" type="button" id="overlay-new">重来</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="game-footer">
+        <div class="wide-controls" aria-label="关卡">
+          <button class="control-button" type="button" id="prev-level">上一关</button>
+          <button class="control-button" type="button" id="undo">撤销</button>
+          <button class="control-button" type="button" id="next-level">下一关</button>
+        </div>
+        <div class="control-pad" aria-label="方向">
+          <span></span>
+          <button class="control-button" type="button" data-dir="up">↑</button>
+          <span></span>
+          <button class="control-button" type="button" data-dir="left">←</button>
+          <span></span>
+          <button class="control-button" type="button" data-dir="right">→</button>
+          <span></span>
+          <button class="control-button" type="button" data-dir="down">↓</button>
+          <span></span>
+        </div>
+        <div class="message" id="message">滑动画面或点方向按钮移动。</div>
+      </footer>
+    </main>
+    <script src="../shared/retro.js"></script>
+    <script src="game.js"></script>
+    <script src="../shared/fullscreen-shell.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+    </script>
+  </body>
+</html>
